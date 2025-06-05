@@ -2,9 +2,14 @@
 using RabbitMQ.Client.Events;
 using System.Text;
 
-internal class Program
+public class Program
 {
-    private static async Task Main(string[] args)
+    public static async Task Main(string[] args)
+    {
+        
+    }
+
+    public static async Task StartConsumingMessagesAsync()
     {
         ConnectionFactory factory = new ConnectionFactory();  // RabbitMQ serverinə qoşulma üçün fabrik sinifi
         factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");  // RabbitMQ serverinin URI-sini təyin edir
@@ -29,13 +34,13 @@ internal class Program
             consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs e) =>
             {
                 var message = Encoding.UTF8.GetString(e.Body.ToArray());  // Mesajın bədənini UTF-8 ilə oxuyur
-                Console.WriteLine($" [x] Received {message}"); 
+                Console.WriteLine($" [x] Received {message}");
 
                 // Mesaj alındıqdan sonra təsdiq edilir (acknowledgement)
                 await channel.BasicAckAsync(e.DeliveryTag, true);  // Mesajın alınması təsdiq edilir
             };
 
-            Console.ReadLine();  
+            Console.ReadLine();
         }
     }
 }
