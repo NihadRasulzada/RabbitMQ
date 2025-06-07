@@ -6,7 +6,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        
+       
     }
 
     public static async Task StartConsumingMessagesAsync()
@@ -40,6 +40,67 @@ public class Program
                 await channel.BasicAckAsync(e.DeliveryTag, true);  // Mesajın alınması təsdiq edilir
             };
 
+            Console.ReadLine();
+        }
+    }
+    // Bu metot mesajları qəbul etmək üçün RabbitMQ kanalını konfiqurasiya edir
+    public async Task ReceiveMessagesAsync()
+    {
+        // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
+        ConnectionFactory factory = new ConnectionFactory();
+
+        // RabbitMQ serverinin URI-sini təyin edirik (bu, serverə necə qoşulacağımızı göstərir)
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+
+        // RabbitMQ serverinə asinxron qoşuluruq
+        using (IConnection connection = await factory.CreateConnectionAsync())
+        {
+            // Bağlantıdan bir kanal yaradırıq (kanal mesajların göndərilməsi və alınması üçün istifadə olunur)
+            IChannel channel = await connection.CreateChannelAsync();
+
+            // Kanal üzərindən yeni bir növbə (queue) yaradırıq və onun adını random olaraq təyin edirik
+            string randomQueueName = (await channel.QueueDeclareAsync()).QueueName;
+
+            // Növbəni "logs-fanout" adlı exchange ilə bağlayırıq (fanout exchange, bütün mesajları bağlanan bütün növbələrə göndərir)
+            await channel.QueueBindAsync(queue: randomQueueName,
+                                          exchange: "logs-fanout",
+                                          routingKey: "",   // RoutingKey boş olduğu üçün, fanout exchange-də bütün növbələrə göndərilir
+                                          arguments: null); // Əlavə arqumentlər yoxdur
+
+            // Basic QoS (Quality of Service) ayarlarını təyin edirik:
+            // Burada, yalnız bir mesajın işlənməsini istəyirik (prefetchCount: 1) və bu, mesajın əl ilə təsdiqlənməsini təmin edir
+            await channel.BasicQosAsync(prefetchSize: 0,    // Mesajın ölçüsünü təyin edirik (0 - limitsiz)
+                                        prefetchCount: 1,   // Hər seferində yalnız bir mesaj alınacaq
+                                        global: false);     // Bu ayar yalnız bu kanal üçün keçərlidir
+
+            // AsyncEventingBasicConsumer obyektini yaradırıq (bu, mesajları asinxron qəbul edəcək)
+            var consumer = new AsyncEventingBasicConsumer(channel);
+
+            // Növbəni dinləməyə başlayırıq və qəbul edilən mesajları async metod ilə işləyirik
+            await channel.BasicConsumeAsync(queue: randomQueueName,
+                                             autoAck: false,  // Mesaj avtomatik təsdiqlənmir, əl ilə təsdiq edilir
+                                             consumer: consumer);  // Consumer obyektini təyin edirik
+
+            // Konsol yazısı ilə mesajların qəbul edilməsini bildiririk
+            Console.WriteLine("Logs Listening");
+
+            // Mesaj alındıqda bu hadisə tetiklenir
+            consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs e) =>
+            {
+                // Mesajın bədənini UTF-8 formatında oxuyuruq
+                var message = Encoding.UTF8.GetString(e.Body.ToArray());
+
+                // Mesajın işlənməsi üçün 1 saniyəlik gözləmə (simulyasiya məqsədilə)
+                Thread.Sleep(1000);
+
+                // Konsola mesajı yazdırırıq
+                Console.WriteLine($" [x] Received {message}");
+
+                // Mesajın işlənməsinin tamamlandığını RabbitMQ serverinə bildiririk (acknowledgement)
+                await channel.BasicAckAsync(e.DeliveryTag, false);  // Mesajın uğurla qəbul edildiyini təsdiqləyirik
+            };
+
+            // Konsoldan daxil edilən hər hansı bir girişi gözləyirik (bu, proqramın dayanmasını təmin edir)
             Console.ReadLine();
         }
     }

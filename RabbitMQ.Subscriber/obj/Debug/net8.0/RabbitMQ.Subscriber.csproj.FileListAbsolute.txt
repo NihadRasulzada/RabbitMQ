@@ -17,3 +17,4 @@ C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Subscriber\obj\Debug\net8.0\refint\Rabb
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Subscriber\obj\Debug\net8.0\RabbitMQ.Subscriber.pdb
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Subscriber\obj\Debug\net8.0\RabbitMQ.Subscriber.genruntimeconfig.cache
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Subscriber\obj\Debug\net8.0\ref\RabbitMQ.Subscriber.dll
+C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Subscriber\obj\Debug\net8.0\RabbitMQ.Subscriber.sourcelink.json

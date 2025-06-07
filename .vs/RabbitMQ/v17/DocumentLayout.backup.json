@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09626937-009B-417A-B53E-CFE9F518C6F2}|RabbitMQ.Publisher\\RabbitMQ.Publisher.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.publisher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09626937-009B-417A-B53E-CFE9F518C6F2}|RabbitMQ.Publisher\\RabbitMQ.Publisher.csproj|solutionrelative:rabbitmq.publisher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{09AB770B-5076-48BB-A909-B6D42F04785B}|RabbitMQ.Subscriber\\RabbitMQ.Subscriber.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.subscriber\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09AB770B-5076-48BB-A909-B6D42F04785B}|RabbitMQ.Subscriber\\RabbitMQ.Subscriber.csproj|solutionrelative:rabbitmq.subscriber\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09626937-009B-417A-B53E-CFE9F518C6F2}|RabbitMQ.Publisher\\RabbitMQ.Publisher.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.publisher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09626937-009B-417A-B53E-CFE9F518C6F2}|RabbitMQ.Publisher\\RabbitMQ.Publisher.csproj|solutionrelative:rabbitmq.publisher\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,26 +28,26 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
-              "RelativeDocumentMoniker": "RabbitMQ.Subscriber\\Program.cs",
-              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
-              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.Publisher\\Program.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
+              "RelativeToolTip": "RabbitMQ.Publisher\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T13:31:13.006Z",
+              "WhenOpened": "2025-06-07T21:03:30.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
-              "RelativeDocumentMoniker": "RabbitMQ.Publisher\\Program.cs",
-              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
-              "RelativeToolTip": "RabbitMQ.Publisher\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.Subscriber\\Program.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
+              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T13:01:32.674Z",
+              "WhenOpened": "2025-06-07T20:41:21.572Z",
               "EditorCaption": ""
             }
           ]

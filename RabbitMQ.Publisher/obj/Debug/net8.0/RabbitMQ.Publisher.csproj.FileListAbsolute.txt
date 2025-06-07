@@ -17,3 +17,4 @@ C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Publisher\obj\Debug\net8.0\refint\Rabbi
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Publisher\obj\Debug\net8.0\RabbitMQ.Publisher.pdb
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Publisher\obj\Debug\net8.0\RabbitMQ.Publisher.genruntimeconfig.cache
 C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Publisher\obj\Debug\net8.0\ref\RabbitMQ.Publisher.dll
+C:\Users\Nihad\Desktop\RabbitMQ\RabbitMQ.Publisher\obj\Debug\net8.0\RabbitMQ.Publisher.sourcelink.json

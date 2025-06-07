@@ -1,11 +1,12 @@
-﻿using RabbitMQ.Client;  
-using System.Text;  
+﻿using RabbitMQ.Client;
+using System.Text;
 
-public class Program 
+public class Program
 {
-    public static async Task Main(string[] args)  
+    public static async Task Main(string[] args)
     {
         
+
     }
     public async Task PublishMessagesToQueueAsync()
     {
@@ -42,6 +43,51 @@ public class Program
             });
 
             Console.ReadLine();
+        }
+    }
+    // Bu metot mesajları RabbitMQ'ya gönderir.
+    public async Task SendMessagesAsync()
+    {
+        // RabbitMQ bağlantısı için ConnectionFactory nesnesi oluşturuluyor
+        ConnectionFactory factory = new ConnectionFactory();
+
+        // AMQP URI üzerinden bağlantı parametreleri ayarlanıyor
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+
+        // Bağlantı oluşturuluyor ve IConnection nesnesi üzerinden bağlantı sağlanıyor
+        using (IConnection connection = await factory.CreateConnectionAsync())
+        {
+            // Kanal oluşturuluyor ve bağlantıya bağlanılıyor
+            IChannel channel = await connection.CreateChannelAsync();
+
+            // "logs-fanout" adında bir exchange oluşturuluyor, türü "fanout" ve dayanıklı (durable) olarak ayarlanıyor
+            await channel.ExchangeDeclareAsync(exchange: "logs-fanout",
+                                               type: ExchangeType.Fanout,
+                                               durable: true);
+
+            // Mesaj özellikleri oluşturuluyor
+            var basicProperties = new BasicProperties();
+
+            // 1 ile 50 arasındaki sayılar için bir mesaj yayınlanıyor
+            Enumerable.Range(1, 50).ToList().ForEach(async x =>
+            {
+                // Gönderilecek mesaj formatı oluşturuluyor
+                string message = $"Log {x}";
+
+                // Mesaj string'ini byte dizisine dönüştürülüyor
+                byte[] body = Encoding.UTF8.GetBytes(message);
+
+                // Mesaj RabbitMQ kanalına gönderiliyor (publish ediliyor)
+                await channel.BasicPublishAsync(
+                    exchange: "logs-fanout", // Mesajın gönderileceği exchange adı
+                    routingKey: string.Empty, // Fanout exchange olduğu için routingKey kullanılmıyor
+                    mandatory: false,  // Mesajın ulaşması zorunlu değil
+                    basicProperties: basicProperties, // Mesajın özellikleri
+                    body: body); // Mesajın gövdesi (byte dizisi)
+
+                // Konsola mesaj gönderildiği bilgisi yazdırılıyor
+                Console.WriteLine($" [x] Sent {message}");
+            });
         }
     }
 }
