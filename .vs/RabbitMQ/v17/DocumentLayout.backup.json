@@ -32,9 +32,10 @@
               "RelativeDocumentMoniker": "RabbitMQ.Publisher\\Program.cs",
               "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
               "RelativeToolTip": "RabbitMQ.Publisher\\Program.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwCoAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:18:07.981Z"
+              "WhenOpened": "2025-06-07T21:18:07.981Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -42,9 +43,9 @@
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
               "RelativeDocumentMoniker": "RabbitMQ.Subscriber\\Program.cs",
-              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs*",
-              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAwAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
+              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T21:14:39.692Z",
               "EditorCaption": ""

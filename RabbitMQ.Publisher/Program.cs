@@ -5,7 +5,6 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-       
     }
 
     public enum LogNames
@@ -151,4 +150,36 @@ public class Program
         Console.ReadLine();
 
     }
+
+    public async Task PublishTopicLogsAsync()
+    {
+        // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
+        ConnectionFactory factory = new ConnectionFactory();
+        // RabbitMQ serverinin URI-sini təyin edirik (bu, serverə necə qoşulacağımızı göstərir)
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+
+        using var connection = await factory.CreateConnectionAsync();  // RabbitMQ serverinə qoşuluruq
+        var channel = await connection.CreateChannelAsync();  // Kanal yaradılır
+        await channel.ExchangeDeclareAsync("logs-topic", durable: true, type: ExchangeType.Topic);  // "logs-topic" adı ilə topic tipi üzrə exchange yaradılır
+
+        var basicProperties = new BasicProperties();  // Mesaj üçün sadə əsas xüsusiyyətlər təyin edilir
+        Random rnd = new Random();  // Random nömrələr yaratmaq üçün obyekt
+        Enumerable.Range(1, 50).ToList().ForEach(async x =>  // 50 log mesajı göndəririk
+        {
+            // Random olaraq 3 fərqli log tipi seçilir
+            LogNames log1 = (LogNames)rnd.Next(1, 5);
+            LogNames log2 = (LogNames)rnd.Next(1, 5);
+            LogNames log3 = (LogNames)rnd.Next(1, 5);
+            var routeKey = $"{log1}.{log2}.{log3}";  // Routing key (log növlərini birləşdiririk)
+            string message = $"log-type: {log1}-{log2}-{log3}";  // Mesajın mətni
+            var messageBody = Encoding.UTF8.GetBytes(message);  // Mesajı byte formatına çeviririk
+            await channel.BasicPublishAsync("logs-topic", routeKey, false, basicProperties, messageBody);  // Mesajı topic exchange'ə göndəririk
+            Console.WriteLine($"Logs Sending : {message}");  // Hər bir logun göndərildiyi ekrana yazılır
+        });
+
+        // İstifadəçi proqramın bitməsini gözləyir
+        Console.ReadLine();
+
+    }
+
 }

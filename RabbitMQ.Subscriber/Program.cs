@@ -6,11 +6,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        
-
     }
-
-
 
     public async Task StartConsumingMessagesAsync()
     {
@@ -143,5 +139,55 @@ public class Program
         // Konsolda məlumatı gözləməyə davam edirik
         Console.WriteLine("Logs Listening...");
         Console.ReadLine();
+    }
+    public async Task ConsumeTopicLogsAsync()
+    {
+        // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
+        ConnectionFactory factory = new ConnectionFactory();
+        // RabbitMQ serverinin URI-sini təyin edirik (bu, serverə necə qoşulacağımızı göstərir)
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+
+        // RabbitMQ serverinə qoşuluruq
+        using var connection = await factory.CreateConnectionAsync();
+        // Kanal yaradılır
+        var channel = await connection.CreateChannelAsync();
+
+        // QoS (Quality of Service) parametrləri təyin edirik: hər seferində yalnız 1 mesaj qəbul edilsin
+        await channel.BasicQosAsync(0, 1, false);
+
+        // Mesajları dinləmək üçün consumer obyektini yaradırıq
+        var consumer = new AsyncEventingBasicConsumer(channel);
+
+        // Yeni bir növbə yaradılır və adı əldə edilir
+        var queueName = (await channel.QueueDeclareAsync()).QueueName;
+
+        // Bu routing key ilə mənbə növbəsi ilə bağlanırıq
+        var routekey = "Info.#";  // Bu, "Info." ilə başlayan bütün routing key-ləri qəbul edəcək
+        await channel.QueueBindAsync(queueName, "logs-topic", routekey);
+
+        // Mesajları qəbul etməyə başlayırıq
+        await channel.BasicConsumeAsync(queueName, false, consumer);
+
+        Console.WriteLine("Logs Listening..."); // Dinləyici işə salındı, mesajlar gözlənir
+
+        // Consumer obyektinin ReceivedAsync hadisəsinə mesaj alındıqda işləyən kodu əlavə edirik
+        consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs e) =>
+        {
+            // Göndərilən mesajı byte array-dən string-ə çeviririk
+            var message = Encoding.UTF8.GetString(e.Body.ToArray());
+
+            // Bir neçə saniyəlik gecikmə əlavə edirik (şəxsi məqsədlər üçün istifadə edilə bilər)
+            Thread.Sleep(1500);
+
+            // Mesajı ekranda çap edirik
+            Console.WriteLine("Messages:" + message);
+
+            // Mesajın düzgün alındığını RabbitMQ-ya bildirmək üçün ACK (acknowledgment) göndəririk
+            await channel.BasicAckAsync(e.DeliveryTag, false);
+        };
+
+        // Programın bitməsini gözləyirik
+        Console.ReadLine();
+
     }
 }
