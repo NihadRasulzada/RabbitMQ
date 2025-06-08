@@ -18,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
-              "RelativeDocumentMoniker": "RabbitMQ.Subscriber\\Program.cs",
-              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
-              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:07:26.963Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,9 +32,22 @@
               "RelativeDocumentMoniker": "RabbitMQ.Publisher\\Program.cs",
               "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Publisher\\Program.cs",
               "RelativeToolTip": "RabbitMQ.Publisher\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-07T21:05:58.189Z",
+              "WhenOpened": "2025-06-07T21:18:07.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.Subscriber\\Program.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.Subscriber\\Program.cs",
+              "RelativeToolTip": "RabbitMQ.Subscriber\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T21:14:39.692Z",
               "EditorCaption": ""
             }
           ]

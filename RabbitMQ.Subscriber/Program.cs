@@ -6,10 +6,13 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-       
+        
+
     }
 
-    public static async Task StartConsumingMessagesAsync()
+
+
+    public async Task StartConsumingMessagesAsync()
     {
         ConnectionFactory factory = new ConnectionFactory();  // RabbitMQ serverinə qoşulma üçün fabrik sinifi
         factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");  // RabbitMQ serverinin URI-sini təyin edir
@@ -103,5 +106,42 @@ public class Program
             // Konsoldan daxil edilən hər hansı bir girişi gözləyirik (bu, proqramın dayanmasını təmin edir)
             Console.ReadLine();
         }
+    }
+    public async Task DirectExchangeConsume()
+    {
+        // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
+        ConnectionFactory factory = new ConnectionFactory();
+        // RabbitMQ serverinin URI-sini təyin edirik (bu, serverə necə qoşulacağımızı göstərir)
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+        using var connection = await factory.CreateConnectionAsync();
+        var channel = await connection.CreateChannelAsync();
+
+        await channel.BasicQosAsync(prefetchSize: 0,    // Mesajın ölçüsünü təyin edirik (0 - limitsiz)
+                                    prefetchCount: 1,   // Hər seferində yalnız bir mesaj alınacaq
+                                    global: false);
+
+        var consumer = new AsyncEventingBasicConsumer(channel);
+        var queueName = "direct-queue-Critical";
+
+        // Düzgün şəkildə consume edilməsi üçün "await" əlavə edilir
+        await channel.BasicConsumeAsync(queue: queueName,
+                                        autoAck: false,
+                                        consumer: consumer);
+
+        // `ReceivedAsync` hadisəsi düzgün şəkildə bağlanmalı
+        consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs e) =>
+        {
+            var message = Encoding.UTF8.GetString(e.Body.ToArray());
+            Console.WriteLine("Gelen Mesaj: " + message);
+            // Task.Delay ilə simulasiya edilən gecikmə
+            await Task.Delay(1000);  // Mesajın işlənməsi üçün 1 saniyəlik gözləmə (simulyasiya məqsədilə)
+
+            // Mesaj işləndikdən sonra ack göndərilir
+            await channel.BasicAckAsync(e.DeliveryTag, false);
+        };
+
+        // Konsolda məlumatı gözləməyə davam edirik
+        Console.WriteLine("Logs Listening...");
+        Console.ReadLine();
     }
 }
