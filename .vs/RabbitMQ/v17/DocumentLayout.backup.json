@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.watermarkapp\\backgroundservices\\imagewatermarkprocessbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|solutionrelative:rabbitmq.watermarkapp\\backgroundservices\\imagewatermarkprocessbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.watermarkapp\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|solutionrelative:rabbitmq.watermarkapp\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.watermarkapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|solutionrelative:rabbitmq.watermarkapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.watermarkapp\\rabbitmq.watermarkapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|solutionrelative:rabbitmq.watermarkapp\\rabbitmq.watermarkapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|c:\\users\\nihad\\desktop\\rabbitmq\\rabbitmq.watermarkapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CCED60DB-5408-417E-A065-6F89C77E7252}|RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj|solutionrelative:rabbitmq.watermarkapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.WatermarkApp\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "RabbitMQ.WatermarkApp\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T22:57:16.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.WatermarkApp\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "RabbitMQ.WatermarkApp\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T22:57:16.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Program.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.WatermarkApp\\Program.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\Program.cs*",
+              "RelativeToolTip": "RabbitMQ.WatermarkApp\\Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T22:56:39.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RabbitMQ.WatermarkApp",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj",
+              "RelativeDocumentMoniker": "RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj*",
+              "RelativeToolTip": "RabbitMQ.WatermarkApp\\RabbitMQ.WatermarkApp.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-09T22:52:01.746Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ImageWatermarkProcessBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\BackgroundServices\\ImageWatermarkProcessBackgroundService.cs",
+              "RelativeDocumentMoniker": "RabbitMQ.WatermarkApp\\BackgroundServices\\ImageWatermarkProcessBackgroundService.cs",
+              "ToolTip": "C:\\Users\\Nihad\\Desktop\\RabbitMQ\\RabbitMQ.WatermarkApp\\BackgroundServices\\ImageWatermarkProcessBackgroundService.cs*",
+              "RelativeToolTip": "RabbitMQ.WatermarkApp\\BackgroundServices\\ImageWatermarkProcessBackgroundService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T22:52:13.974Z",
+              "EditorCaption": ""
             }
           ]
         }
