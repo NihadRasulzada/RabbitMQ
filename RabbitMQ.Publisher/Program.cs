@@ -52,7 +52,7 @@ public class Program
         }
     }
     // Bu metot mesajları RabbitMQ'ya gönderir.
-    public async Task SendMessagesAsync()
+    public async Task FanoutExchangePublish()
     {
         // RabbitMQ bağlantısı için ConnectionFactory nesnesi oluşturuluyor
         ConnectionFactory factory = new ConnectionFactory();
@@ -150,8 +150,7 @@ public class Program
         Console.ReadLine();
 
     }
-
-    public async Task PublishTopicLogsAsync()
+    public async Task TopicExchangePublish()
     {
         // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
         ConnectionFactory factory = new ConnectionFactory();
@@ -181,5 +180,34 @@ public class Program
         Console.ReadLine();
 
     }
+    public async Task HeaderExchangePublish()
+    {
+        // RabbitMQ bağlantısı için ConnectionFactory nesnesi oluşturuluyor
+        ConnectionFactory factory = new ConnectionFactory();
 
+        // AMQP URI üzerinden bağlantı parametreleri ayarlanıyor
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+        using var connection = await factory.CreateConnectionAsync();
+
+        var channel = await connection.CreateChannelAsync();
+
+        await channel.ExchangeDeclareAsync("header-exchange", durable: true, type: ExchangeType.Headers);
+
+
+        Dictionary<string, object> headers = new Dictionary<string, object>();
+
+        headers.Add("format", "pdf");
+        headers.Add("shape2", "a4");
+
+        var properties = new BasicProperties();
+        properties.Headers = headers;
+
+
+
+        await channel.BasicPublishAsync("header-exchange", string.Empty,false, properties, Encoding.UTF8.GetBytes("header message"));
+
+        Console.WriteLine("message sended");
+
+        Console.ReadLine();
+    }
 }

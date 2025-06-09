@@ -43,7 +43,7 @@ public class Program
         }
     }
     // Bu metot mesajları qəbul etmək üçün RabbitMQ kanalını konfiqurasiya edir
-    public async Task ReceiveMessagesAsync()
+    public async Task FanoutExchangeConsume()
     {
         // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
         ConnectionFactory factory = new ConnectionFactory();
@@ -140,7 +140,7 @@ public class Program
         Console.WriteLine("Logs Listening...");
         Console.ReadLine();
     }
-    public async Task ConsumeTopicLogsAsync()
+    public async Task TopicExchangeConsume()
     {
         // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
         ConnectionFactory factory = new ConnectionFactory();
@@ -187,6 +187,57 @@ public class Program
         };
 
         // Programın bitməsini gözləyirik
+        Console.ReadLine();
+
+    }
+    public async Task HeaderExchangeConsume()
+    {
+        // RabbitMQ serverinə qoşulmaq üçün ConnectionFactory obyektini yaradırıq
+        ConnectionFactory factory = new ConnectionFactory();
+        // RabbitMQ serverinin URI-sini təyin edirik (bu, serverə necə qoşulacağımızı göstərir)
+        factory.Uri = new Uri("amqps://jqtpztoz:EGeJb2LSQrMdWnmPeSJveypSJNNqkl3j@duck.lmq.cloudamqp.com/jqtpztoz");
+
+        using var connection = await factory.CreateConnectionAsync();
+
+        var channel = await connection.CreateChannelAsync();
+        await channel.ExchangeDeclareAsync("header-exchange", durable: true, type: ExchangeType.Headers);
+
+        await channel.BasicQosAsync(0, 1, false);
+        var consumer = new AsyncEventingBasicConsumer(channel);
+
+        var queueName = (await channel.QueueDeclareAsync()).QueueName;
+
+        Dictionary<string, object> headers = new Dictionary<string, object>();
+
+        headers.Add("format", "pdf");
+        headers.Add("shape", "a4");
+        headers.Add("x-match", "any");
+
+
+
+        await channel.QueueBindAsync(queueName, "header-exchange", String.Empty, headers);
+
+        await channel.BasicConsumeAsync(queueName, false, consumer);
+
+
+        Console.WriteLine("Logları dinleniyor...");
+
+        consumer.ReceivedAsync += async (object sender, BasicDeliverEventArgs e) =>
+        {
+            var message = Encoding.UTF8.GetString(e.Body.ToArray());
+
+            Thread.Sleep(1500);
+            Console.WriteLine("Gelen Mesaj:" + message);
+
+
+
+            await channel.BasicAckAsync(e.DeliveryTag, false);
+        };
+
+
+
+
+
         Console.ReadLine();
 
     }
